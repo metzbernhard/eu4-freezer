@@ -16,3 +16,5 @@ This will in no way affect or be affected by changes by the your Steam-Installat
 After the copying is done, you can move the folder if you wish
     
     Command line usage: python freezeeu4-cli Path_to_eu4.exe Path_to_settings.txt Empty_Target_Path
+
+![Screenshot](https://puu.sh/y9deT/4eaa8fdec4.png "Screenshot")
