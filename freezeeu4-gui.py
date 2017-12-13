@@ -94,6 +94,7 @@ Command line usage: python freezeeu4-cli Path_to_eu4.exe Path_to_settings.txt Em
             copy_tree(self.paths[self.path2] + '\mod', self.paths[self.path3] + '\mod')
             copy_tree(self.paths[self.path2] + '\save games', self.paths[self.path3] + '\save games')
             shutil.copy(self.paths[self.path2] + '\settings.txt', self.paths[self.path3] + '\settings.txt')
+            self.rename_mods()
             messagebox.showinfo(title='Done!', message='Copy finished, enjoy!')
         else:
             messagebox.showerror(title="Something went wrong",
@@ -115,10 +116,27 @@ Command line usage: python freezeeu4-cli Path_to_eu4.exe Path_to_settings.txt Em
             paths_correct = False
             messagebox.showerror(title="Something went wrong",
                                  message="Your Target path is not empty!")
+        # debug, you'll still get the message, but it'll copy
+        # return True
         return paths_correct
 
     def help(self):
         messagebox.showinfo('How to Use', self.helptext)
+
+    def rename_mods(self):
+        os.chdir('mod')
+        for file in os.listdir():
+            if not file.endswith('.py'):
+                os.rename(file, 'old-' + file)
+
+        for file in os.listdir():
+            if file.endswith('.mod'):
+                with open(file, 'r') as f:
+                    text = f.readlines()
+                    text[0] = text[0].replace('="', '="old ')
+                    text[1] = text[1].replace('mod/', 'mod/old-')
+                with open(file, 'w') as f:
+                    f.writelines(text)
 
 
 def main():
