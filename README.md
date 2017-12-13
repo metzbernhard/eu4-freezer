@@ -1,4 +1,7 @@
 # eu4-freezer
+
+###Update 13.12. didn't work as intended, because steam goes into the userdir to update the mods, so you're still left with incompatible mods. New version gives all mods an 'old-' prefix, to prevent Steam from updating them. 
+
 Tool to save current state of EU4 installation
 
 This tool helps you to "freeze" your current EU4 installation, so you can play old campaigns/mods after new versions arrived.
